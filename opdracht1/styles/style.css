@@ -4,11 +4,8 @@
 /* FONTS */
 /*********/
 @font-face {
-	font-family: 'eenfont';
-	src: url('../fonts/eenfont.woff2') format('woff2'),
-			 url('../fonts/eenfont.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
+	font-family: 'canon';
+	src: url('../fonts/CANON.ttf');
 
 }
 
@@ -38,20 +35,146 @@ button:not[disabled], summary {
 	/* startje */
 	--color-text:#111;
 	--color-background:#eee;
+	--color-rood: #c01921;
 }
 
 
-
-
-
-/****************/
-/* JOUW STYLING */
-/****************/
+html,
 body {
-  font-family:eenfont, sans-serif;
-  color:var(--color-text);
-  background-color:var(--color-background);
+  height: 100%;
 }
 
-/* jouw code */
+
+/******************/
+/* DE ACHTERGROND */
+/******************/
+body {
+  font-family: canon, sans-serif;
+  color:var(--color-text);
+
+  background: linear-gradient(45deg,
+    var(--color-text),
+    var(--color-text),
+    var(--color-rood),
+    var(--color-background)
+  );
+  background-size: 500% 500%;
+  animation: background 7s ease-in;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-size: 5em;
+}
+
+
+/************/
+/* DE TEKST */
+/************/
+
+h1 {
+  display: flex;
+  text-align: center;
+  position: relative;
+  background-color: transparent;
+
+  animation: dichterbij 1s ease-in;
+  animation-delay: 5s;
+  animation-fill-mode: both;
+}
+
+
+h1 span:nth-last-child(2) {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  transform: scale(40) rotate(105deg);
+  -webkit-transform: scale(40) rotate(105deg);
+  z-index: -1;
+
+  display: inline-block;
+  animation: scaleIn 4s cubic-bezier(0.2, 1, 0.2, 1) forwards 2s;
+}
+
+h1 span:nth-last-child(2).scaled {
+  transform: scale(1) rotate(0deg);
+  -webkit-transform: scale(1) rotate(0deg);
+  transition: transform 1s ease-in-out;
+}
+
+
+
+
+
+
+
+/***************/
+/** ANIMATIES **/
+/***************/
+
+/* De 'O' (cameralens) */
+@keyframes scaleIn {
+  0% {
+    transform: scale(40) rotate(105deg);
+    transform-origin: 50% 50%;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    transform-origin: 50% 50%;
+  }
+}
+
+/* De letters gaan dichter bij elkaar staan */
+@keyframes dichterbij {
+  0%, 20% {
+    gap: .35em;
+    transform: none;
+    color: var(--color-text);
+  }
+  80% {
+    gap: .12em;
+    transform: none;
+  }
+  90% {
+    transform:scale(.9, 1.1); 
+    animation-timing-function: ease-in;
+  }
+  92% {
+    transform: scale(.85, 1.2); 
+    /* animation-timing-function:cubic-bezier(0.895, 0.030, 0.685, 0.220); */
+    animation-timing-function: ease-in-out;
+  }
+  95% {
+    transform:scale(.87, 1.1);
+    animation-timing-function: ease-out;
+  }
+  98% {
+    transform:scale(.95, 1.05);
+    animation-timing-function: ease-in;  
+  }
+  100% {
+    gap: .05em;
+    transform: none;
+    color: var(--color-rood);
+  }
+}
+
+
+/* De achtergrond veranderd van kleur */
+@keyframes background {
+  0% {
+    background-position: 0 50%;
+  }
+  /* 50% {
+    background-position: 50% 50%;
+  } */
+  100% {
+    background-position: 100% 0;
+    background-size: 900% 900%;
+  }
+}
 
