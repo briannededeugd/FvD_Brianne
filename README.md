@@ -32,10 +32,8 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
   ### Je ambitie: 
   Aan deze technieken/punten wil ik werken:
-  - punt 1
-  - punt 2
-  - nog een punt
-  - ...
+  - Meer CSS methodes die ik nog niet eerder heb gebruikt, zoals scale()
+  - Mezelf uitdagen met selectoren (nth-of-type, etc)
  
 </details>
 
@@ -53,13 +51,14 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
   ### Dit ging goed/Heb ik geleerd: 
   Korte omschrijving met plaatje(s)
-
+  
+  De overgangen gingen heel goed en ik vond scale best latig te begrijpen, maar het is mij ook redelijk gelukt.
   <img src="readme-images/dummy-plaatje.svg" width="375px" alt="top">
 
 
   ### Dit was lastig/Is niet gelukt:
   Korte omschrijving met plaatje(s)
-
+  Jammer genoeg is de lens shutter niet gelukt. Dit zou ik met een ::before en een ::after doen, maar omdat de O beweegt en roteert was dit niet te doen met mijn skillset en de tijd die ik had. 
   <img src="readme-images/dummy-plaatje.svg" width="375px" alt="bummer">
 </details>
 
