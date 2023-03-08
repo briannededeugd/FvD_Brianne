@@ -46,20 +46,23 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 
   ### Je uitkomst - karakteristiek screenshot(s):
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="uitomst opdracht 1">
+  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="uitkomst opdracht 1">
 
 
   ### Dit ging goed/Heb ik geleerd: 
   Korte omschrijving met plaatje(s)
   
   De overgangen gingen heel goed en ik vond scale best latig te begrijpen, maar het is mij ook redelijk gelukt.
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="top">
+   <img src="readme-images/animatie-1.png" width="375px" alt="top">
+   <img src="readme-images/animatie-2.png" width="375px" alt="top">
+   <img src="readme-images/animatie-3.png" width="375px" alt="top">
+   <img src="readme-images/animatie-4.png" width="375px" alt="top">
+   <img src="readme-images/animatie-5.png" width="375px" alt="top">
 
 
   ### Dit was lastig/Is niet gelukt:
   Korte omschrijving met plaatje(s)
-  Jammer genoeg is de lens shutter niet gelukt. Dit zou ik met een ::before en een ::after doen, maar omdat de O beweegt en roteert was dit niet te doen met mijn skillset en de tijd die ik had. 
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="bummer">
+  Jammer genoeg is de lens shutter niet gelukt. Dit zou ik met een ::before en een ::after doen, maar omdat de O beweegt en roteert was dit niet te doen met mijn skillset en de tijd die ik had.
 </details>
 
 
