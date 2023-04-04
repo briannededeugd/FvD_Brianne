@@ -291,9 +291,7 @@ Voor alle sections in het scherm kijk ik of er eentje is met displayFlex. Is dat
 
 ### Bevinding 5:
 
-Ik gebruikte voor de favorietenlijst een teller en een section die je op kon roepen met een druk op de knop. Alleen als de gebruiker geen favorieten had, kreeg hij/zij ook geen feedback en bleef er alleen een soort rare strip over als de lijst tevoorschijn werd gehaald:
-
-<img src="readme-images/lightscreen-fix.png" width="375px" alt="top">
+Ik gebruikte voor de favorietenlijst een teller en een section die je op kon roepen met een druk op de knop. Alleen als de gebruiker geen favorieten had, kreeg hij/zij ook geen feedback en bleef er alleen een soort rare strip over als de lijst tevoorschijn werd gehaald.
 
 #### oplossing:
 
@@ -352,5 +350,4 @@ Ik vond het heel lastig om cirkels responsive te maken. Op mijn televisie heb ik
 
 Verder ben ik zeker van mezelf onder de indruk!
 
-  <img src="readme-images/dummy-plaatje.svg" width="375px" alt="bummer">
 </details>
