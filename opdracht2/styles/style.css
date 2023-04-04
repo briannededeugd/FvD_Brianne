@@ -6,7 +6,7 @@
 @font-face {
 	font-family: 'eenfont';
 	src: url('../fonts/eenfont.woff2') format('woff2'),
-			 url('../fonts/eenfont.woff') format('woff');
+		url('../fonts/eenfont.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 
@@ -19,11 +19,18 @@
 /**************/
 /* CSS REMEDY */
 /**************/
-*, *::after, *::before {
-  box-sizing:border-box;  
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
 }
 
-button:not[disabled], summary {
+button:not[disabled],
+summary {
+	cursor: pointer;
+}
+
+button:hover {
 	cursor: pointer;
 }
 
@@ -36,8 +43,44 @@ button:not[disabled], summary {
 /*********************/
 :root {
 	/* startje */
-	--color-text:#111;
-	--color-background:#eee;
+	--color-text: #111;
+	--color-borders: #111;
+	--color-background: #2f4450;
+	--color-tvbackground: #f4ebe6;
+
+	--color-muur: #f1d9c8;
+	--color-muurschaduw: #9b8677;
+	--color-tafel: #C4A381;
+	--color-tafelschaduw: #957c63;
+
+	/* Rode tinten televisie */
+	--color-maindonkerder: #984c47;
+	--color-maindonker: #ce645d;
+	--color-mainlicht: #e49f95;
+
+	--img-logo: url('/images/filmstash-dark.PNG');
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		/* startje */
+		--color-text: #111;
+		--color-borders: #111;
+		--color-background: #f1d9c8;
+		--color-tvbackground: #f1d9c8;
+
+		--color-muur: #2f4450;
+		--color-muurschaduw: #142129;
+		--color-tafel: #C4A381;
+		--color-tafelschaduw: #957c63;
+
+		/* Rode tinten televisie */
+		--color-maindonkerder: #984c47;
+		--color-maindonker: #ce645d;
+		--color-mainlicht: #e49f95;
+
+		--img-logo: url('/images/filmstash-light.PNG');
+	}
 }
 
 
@@ -47,11 +90,786 @@ button:not[disabled], summary {
 /****************/
 /* JOUW STYLING */
 /****************/
-body {
-  font-family:eenfont, sans-serif;
-  color:var(--color-text);
-  background-color:var(--color-background);
+
+html {
+	background: linear-gradient(180deg,
+			var(--color-muur) 70%,
+			/* var(--color-muurschaduw) 70%, */
+			var(--color-text) 70.5%,
+			var(--color-tafel) 70.5%,
+			var(--color-tafelschaduw) 100%);
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding-top: 10vh;
 }
 
-/* jouw code */
+body {
+	font-family: eenfont, sans-serif;
+	color: var(--color-text);
 
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 1fr;
+	grid-template-areas:
+		'television dvdstack';
+}
+
+body>section:first-of-type,
+body>section:nth-of-type(2) {
+	margin-top: 5vh;
+}
+
+ul>li>p,
+body>section:last-of-type>section:not(:first-of-type)>p,
+body>section:first-of-type>section:nth-of-type(2)>section:first-of-type>p,
+body>section:first-of-type>section:nth-of-type(2)>section:nth-of-type(2)>section p {
+	color: transparent;
+	margin: 0;
+	padding: 0;
+	font-size: 0;
+}
+
+body>section:last-of-type>section:first-of-type>p {
+	display: inline;
+	color: var(--color-text);
+	font-weight: 600;
+}
+
+p {
+	color: var(--color-text);
+	font-size: clamp(.75em, 1.2vw, 2vw);
+}
+
+.material-icons {
+	color: var(--color-background);
+	-webkit-text-stroke: 5px solid var(--color-text);
+}
+
+h1 {
+	transform: translateX(-5000%);
+}
+
+h2 {
+	font-size: clamp(1vw, 1.5em, 5vw);
+}
+
+
+
+
+/****************/
+/* STATES */
+/****************/
+body>button:hover {
+	background-color: var(--color-mainlicht);
+}
+
+input[type="radio"]+label:hover {
+	background-color: var(--color-mainlicht);
+}
+
+body>section:first-of-type>section:first-of-type>section:first-of-type>section button:hover {
+	background-color: var(--color-maindonker);
+	color: var(--color-tvbackground);
+}
+
+
+
+
+
+
+
+
+/****************/
+/* LOGO */
+/****************/
+body>img:first-of-type {
+	/* positie */
+	position: absolute;
+	z-index: 1000;
+	left: 5vw;
+	top: 0.75vh;
+
+	/* grootte */
+	height: 15vh;
+}
+
+/****************/
+/* DE TELEVISIE */
+/****************/
+
+/* HELE TELEVISIE */
+body>section:first-of-type {
+	/* positie */
+	margin-left: 5vw;
+
+	/* grootte */
+	height: 75vh;
+	width: 50vw;
+}
+
+/* DE FRAME */
+body>section:first-of-type>section:first-of-type {
+	/* positie */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+
+	/* grootte */
+	height: 85%;
+	width: 100%;
+
+	/* opmaak */
+	background: linear-gradient(90deg,
+			var(--color-maindonker) 20%,
+			var(--color-maindonker) 40%,
+			var(--color-mainlicht) 60%,
+			var(--color-maindonker) 100%);
+	border-radius: 2% 2% 0 0;
+	border: 2px var(--color-text) solid;
+}
+
+/* HET SCHERM */
+body>section:first-of-type>section:first-of-type>section {
+	/* positie */
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	position: relative;
+
+	/* grootte */
+	height: 95%;
+	width: 95%;
+
+	/* opmaak */
+	background-color: var(--color-background);
+	box-shadow: inset 0px 0px 20px rgba(31, 31, 31, 0.9);
+	border-radius: 4%;
+	border: 2px var(--color-text) solid;
+}
+
+/* DE DVD PLAYER */
+body>section:first-of-type>section:nth-of-type(2) {
+	/* positie */
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	bottom: 0;
+	position: relative;
+
+	/* grootte */
+	height: 15%;
+	width: 100%;
+	gap: 4vw;
+
+	/* opmaak */
+	background-color: var(--color-maindonkerder);
+	border-radius: 0 0 .75em .75em;
+	border: 2px var(--color-text) solid;
+	border-top: none;
+}
+
+/* INSERT DVD */
+body>section:first-of-type>section:nth-of-type(2)>section:first-of-type {
+	/* positie */
+	display: block;
+	position: relative;
+
+	/* grootte */
+	height: 50%;
+	width: 60%;
+
+	/* opmaak */
+	background-color: white;
+	box-shadow: inset 0px 0px 20px rgba(31, 31, 31, 0.9);
+	border: 2px var(--color-text) solid;
+	margin-left: 2em;
+}
+
+/* CONTROLS */
+body>section:first-of-type>section:nth-of-type(2)>section:nth-of-type(2) {
+	height: 10vh;
+	margin-right: 1em;
+	display: flex;
+	align-content: center;
+}
+
+
+body>section:first-of-type>section:nth-of-type(2)>section:nth-of-type(2)>section {
+	display: flex;
+	flex-direction: row;
+	justify-content: end;
+	align-items: center;
+	gap: 2vw;
+}
+
+/* PLAYKNOP */
+body>section:first-of-type>section:nth-of-type(2)>section:nth-of-type(2)>section>span {
+	/* grootte */
+	height: 5vh;
+	width: 3vw;
+
+	/* opmaak */
+	border-radius: 50%;
+	background-image: linear-gradient(#f0f0f0, #aeaeae);
+	box-shadow: 0 3px 8px #171717,
+		inset 0 2px 3px #fff;
+	margin: .5em;
+	text-align: center;
+}
+
+body>section:first-of-type>section:nth-of-type(2)>section:nth-of-type(2)>section>span:first-of-type:before {
+	content: '▶︎';
+	display: block;
+	position: relative;
+	top: 85%;
+	left: 55%;
+	transform: translate(-50%, -25px);
+	color: var(--color-maindonkerder);
+}
+
+body>section:first-of-type>section:nth-of-type(2)>section:nth-of-type(2)>section>span:nth-of-type(2):before {
+	content: '◼︎';
+	display: block;
+	position: relative;
+	font-size: 1.4em;
+	top: 70%;
+	left: 50%;
+	transform: translate(-50%, -25px);
+	color: var(--color-maindonkerder);
+}
+
+
+
+
+
+
+/****************/
+/* DE DVD STACK */
+/****************/
+
+ul {
+	/* positie */
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+
+	/* grootte */
+	height: 75vh;
+	width: 40vw;
+	margin: 0;
+}
+
+ul>li {
+	/* positie */
+	display: block;
+	position: relative;
+
+	/* grootte */
+	height: 7%;
+	width: 70%;
+
+	/* opmaak */
+	border-radius: .5em;
+	box-shadow: inset 0px 0px 20px rgba(31, 31, 31, 0.9);
+	margin: 0;
+	padding: 0;
+}
+
+
+
+
+
+
+
+
+/*******************/
+/* DVD INDIVIDUEEL */
+/*******************/
+
+ul>li:first-of-type {
+	background-image: url('../images/eeaao.jpg');
+	background-size: cover;
+}
+
+ul>li:nth-of-type(2) {
+	left: 2vw;
+	background-image: url('../images/thewhale.jpg');
+	background-size: cover;
+	background-position: center;
+}
+
+ul>li:nth-of-type(3) {
+	left: 1vw;
+	background-image: url('../images/thelittlemermaid.jpg');
+	background-size: cover;
+	background-position: 0% 35%;
+}
+
+ul>li:nth-of-type(4) {
+	left: -1vw;
+	background-image: url('../images/blackpanther.jpg');
+	background-size: cover;
+	background-position: 0% 45%;
+}
+
+ul>li:nth-of-type(5) {
+	left: 1vw;
+	background-image: url('../images/parasite.webp');
+	background-size: cover;
+	background-position: 0% 70%;
+}
+
+ul>li:nth-of-type(6) {
+	left: 2vw;
+	background-image: url('../images/avatar.jpg');
+	background-size: cover;
+	background-position: 0% 40%;
+}
+
+ul>li:nth-of-type(7) {
+	left: 3vw;
+	background-image: url('../images/dontworrydarling.webp');
+	background-size: cover;
+	background-position: 0% 92%;
+}
+
+ul>li:nth-of-type(8) {
+	left: -1vw;
+	background-image: url('../images/dune.webp');
+	background-size: cover;
+	background-position: 0% 88%;
+}
+
+ul>li:nth-of-type(9) {
+	left: -2vw;
+	background-image: url('../images/tar.jpg');
+	background-size: cover;
+	background-position: 0% 65%;
+}
+
+ul>li:nth-of-type(10) {
+	left: 1vw;
+	background-image: url('../images/nope.webp');
+	background-size: cover;
+	background-position: 0% 40%;
+}
+
+ul>li:nth-of-type(11) {
+	left: 3vw;
+	background-image: url('../images/pinnochio.jpg');
+	background-size: cover;
+	background-position: 0% 52%;
+}
+
+ul>li:nth-of-type(12) {
+	left: 2vw;
+	background-image: url('../images/knivesout.jpg');
+	background-size: cover;
+	background-position: 0% 70%;
+}
+
+
+
+
+
+
+/************************/
+/* DE FILM INFORMATIE */
+/************************/
+body>section:first-of-type>section:first-of-type>section:first-of-type>section {
+	/* positie */
+	position: relative;
+	gap: 1em;
+	margin: 0 2em;
+
+	/* grootte */
+	width: 45vw;
+}
+
+body>section:first-of-type>section:first-of-type>section:first-of-type>section img {
+	/* grootte */
+	max-width: 100%;
+	height: auto;
+}
+
+/* HET SCHERM */
+body>section:first-of-type>section:first-of-type>section>section {
+	display: none;
+}
+
+/* DE KNOP  */
+body>section:first-of-type>section:first-of-type>section:first-of-type>section button {
+	/* positie */
+	position: absolute;
+	bottom: 0;
+
+	/* grootte */
+	padding: .75em;
+
+	/* opmaak */
+	border: none;
+	background-color: var(--color-mainlicht);
+}
+
+
+
+/*******************/
+/*  OPSLAAN TABJE  */
+/*******************/
+
+body>button {
+	/* positie */
+	position: absolute;
+	top: 2vh;
+	right: 2vw;
+
+	/* grootte */
+	width: 5vw;
+	height: 8vh;
+
+	/* opmaak */
+	border-radius: .5em;
+	background-color: var(--color-maindonker);
+	border: none;
+}
+
+body>button>span {
+	/* positie */
+	position: absolute;
+	top: -1vh;
+	right: -.5vw;
+
+	/* grootte */
+	padding: .5em;
+	border-radius: .625em;
+
+	/* opmaak */
+	color: var(--color-maindonkerder);
+	font-size: 1em;
+	text-align: center;
+	line-height: 1.25em;
+	font-weight: 700;
+	background-color: var(--color-background);
+}
+
+body>section:last-of-type {
+	/* positie */
+	position: fixed;
+
+	/* grootte */
+	width: 20vw;
+	height: max-content;
+	right: 0;
+	order: 1;
+	overflow: auto;
+
+	/* opmaak */
+	background-color: var(--color-background);
+	padding: .5em 1em;
+	margin: auto 2vw;
+	transition: .5s;
+
+	transform: translateX(150%);
+	z-index: 100;
+}
+
+body>section:last-of-type>section {
+	display: none;
+}
+
+body>section:last-of-type>section h3 {
+	font-size: 1em;
+}
+
+body>section:last-of-type>section button {
+	/* position */
+
+	/* grootte */
+	width: 2vw;
+
+	/* opmaak */
+	background: none;
+	border: none;
+	margin-left: auto;
+}
+
+body>section:last-of-type>section>button i {
+	width: 1vw;
+
+}
+
+body>section:last-of-type img {
+	/* positie */
+	order: -3;
+	/* grootte */
+	height: 3vh;
+	width: 3vw;
+	background-size: cover;
+
+	/* opmaak */
+}
+
+body>section:last-of-type.open {
+	transform: translateX(0);
+	display: block;
+}
+
+body>section:last-of-type>section.added {
+	display: flex !important;
+	align-items: center;
+	gap: .5em;
+}
+
+body>section:last-of-type * {
+	color: var(--color-muur) !important;
+}
+
+
+
+/* GRID AREAS */
+
+#televisie {
+	grid-area: television !important;
+}
+
+#dvdstack {
+	grid-area: dvdstack !important;
+}
+
+
+
+
+
+/* FILTEREN */
+
+ul.grappig li:not(.grappig) {
+	display: none;
+}
+
+ul.spannend li:not(.spannend) {
+	display: none;
+}
+
+ul.kindvriendelijk li:not(.kindvriendelijk) {
+	display: none;
+}
+
+ul.diepgaand li:not(.diepgaand) {
+	display: none;
+}
+
+ul.movies {
+	transition: transform 0.5s ease-out;
+}
+
+ul.movies.slide-out-right {
+	transform: translateX(150%);
+}
+
+ul.movies.slide-in-right {
+	transform: translateX(0);
+}
+
+
+body>section:nth-of-type(2)>form {
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	text-align: center;
+	justify-content: center;
+	width: 100%;
+}
+
+body>section:nth-of-type(2)>form input[type="radio"] {
+	position: absolute;
+	opacity: 0;
+}
+
+input[type="radio"]+label {
+	padding: 1em;
+	margin: 0;
+	cursor: pointer;
+
+	background-color: transparent;
+	color: var(--color-background);
+	font-weight: 100;
+}
+
+input[type="radio"]+label:not(:last-of-type) {
+	border-right: solid 2px var(--color-maindonker);
+}
+
+input[type="radio"]:checked+label {
+	background-color: var(--color-maindonker);
+	color: var(--color-text);
+}
+
+
+
+
+
+
+/* Klein scherm */
+@media (max-width: 50em) {
+
+	/* DVDs onder televisie */
+	body {
+		background: linear-gradient(180deg,
+				var(--color-muur) 30%,
+				var(--color-tafel) 30%);
+
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-column-gap: 0px;
+		grid-row-gap: -10em;
+		grid-template-areas:
+			"television"
+			"dvdstack";
+	}
+
+	/* Scherm breder */
+	body>section:first-of-type {
+		/* positie */
+		margin-left: 5vw;
+
+		/* grootte */
+		height: 65vh;
+		width: 80vw;
+	}
+
+	/* DVDs aanpassen naar movieposter */
+	ul {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: repeat(3, 1fr);
+		grid-column-gap: 16px;
+		grid-row-gap: 0px;
+
+		width: 80vw;
+		margin-top: auto;
+	}
+
+	ul>li {
+		/* positie */
+		display: block;
+		position: relative;
+		left: 0 !important;
+
+		/* grootte */
+		height: 22.5vh;
+		width: 16vw;
+
+		/* opmaak */
+		border-radius: .5em;
+		box-shadow: inset 0px 0px 20px rgba(31, 31, 31, 0.9);
+		margin: 0;
+		padding: 0;
+	}
+
+	body>section:first-of-type>section:first-of-type>section:first-of-type>section {
+		position: relative;
+		gap: 1em;
+		width: 95vw;
+	}
+
+	body>section:nth-of-type(2)>form {
+		margin: 0 auto 1em;
+	}
+
+
+	/* DVD's individueel */
+	ul>li:first-of-type {
+		background-image: url('../images/poster-eao.jpg');
+		background-size: cover;
+	}
+
+	ul>li:nth-of-type(2) {
+		background-image: url('../images/poster-thewhale.jpg');
+		background-size: cover;
+		background-position: center;
+	}
+
+	ul>li:nth-of-type(3) {
+		background-image: url('../images/poster-tlm.jpg');
+		background-size: cover;
+	}
+
+	ul>li:nth-of-type(4) {
+		background-image: url('../images/poster-blackpanther.jpg');
+		background-size: cover;
+	}
+
+	ul>li:nth-of-type(5) {
+		background-image: url('../images/poster-parasite.jpeg');
+		background-size: cover;
+	}
+
+	ul>li:nth-of-type(6) {
+		background-image: url('../images/poster-avatar.jpeg');
+		background-size: cover;
+	}
+
+	ul>li:nth-of-type(7) {
+		background-image: url('../images/poster-dwd.jpg');
+		background-size: cover;
+	}
+
+	ul>li:nth-of-type(8) {
+		background-image: url('../images/poster-dune.jpeg');
+		background-size: cover;
+	}
+
+	ul>li:nth-of-type(9) {
+		background-image: url('../images/poster-tar.jpeg');
+		background-size: cover;
+	}
+
+	ul>li:nth-of-type(10) {
+		background-image: url('../images/poster-nope.jpg');
+		background-size: cover;
+	}
+
+	ul>li:nth-of-type(11) {
+		background-image: url('../images/poster-pinocchio.jpg');
+		background-size: cover;
+	}
+
+	ul>li:nth-of-type(12) {
+		background-image: url('../images/poster-knivesout.jpg');
+		background-size: cover;
+	}
+
+	body>section:first-of-type>section:first-of-type>section:first-of-type>section button {
+		position: relative;
+		width: max-content;
+		max-height: 2.5vh;
+		font-size: .75em;
+		line-height: 0;
+	}
+
+	body>section:first-of-type>section:nth-of-type(2)>section:nth-of-type(2)>section>span {
+		/* grootte */
+		height: 3vh;
+		width: 3vw;
+
+	}
+
+	body>section:first-of-type>section:nth-of-type(2)>section:nth-of-type(2)>section>span::before {
+		/* grootte */
+		display: none;
+	}
+}
+
+/* Groot scherm */
+@media (min-width: 50em) {
+
+	/* DVDs naast televisie */
+	body {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: 1fr;
+		grid-template-areas: 'television dvdstack';
+	}
+}

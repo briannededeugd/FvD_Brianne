@@ -4,8 +4,8 @@
 /* FONTS */
 /*********/
 @font-face {
-	font-family: 'canon';
-	src: url('../fonts/CANON.ttf');
+  font-family: 'canon';
+  src: url('../fonts/CANON.ttf');
 
 }
 
@@ -16,12 +16,15 @@
 /**************/
 /* CSS REMEDY */
 /**************/
-*, *::after, *::before {
-  box-sizing:border-box;  
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
 
-button:not[disabled], summary {
-	cursor: pointer;
+button:not[disabled],
+summary {
+  cursor: pointer;
 }
 
 
@@ -32,10 +35,10 @@ button:not[disabled], summary {
 /* CUSTOM PROPERTIES */
 /*********************/
 :root {
-	/* startje */
-	--color-text:#111;
-	--color-background:#eee;
-	--color-rood: #c01921;
+  /* startje */
+  --color-text: #111;
+  --color-background: #eee;
+  --color-rood: #c01921;
 }
 
 
@@ -50,14 +53,13 @@ body {
 /******************/
 body {
   font-family: canon, sans-serif;
-  color:var(--color-text);
+  color: var(--color-text);
 
   background: linear-gradient(45deg,
-    var(--color-text),
-    var(--color-text),
-    var(--color-rood),
-    var(--color-background)
-  );
+      var(--color-text),
+      var(--color-text),
+      var(--color-rood),
+      var(--color-background));
   background-size: 500% 500%;
   animation: background 7s ease-in;
   animation-iteration-count: 1;
@@ -80,6 +82,7 @@ h1 {
   text-align: center;
   position: relative;
   background-color: transparent;
+  font-size: clamp(3vw, 10vw, 10vw);
 
   animation: dichterbij 1s ease-in;
   animation-delay: 5s;
@@ -122,6 +125,7 @@ h1 span:nth-last-child(2).scaled {
     transform: scale(40) rotate(105deg);
     transform-origin: 50% 50%;
   }
+
   100% {
     transform: scale(1) rotate(0deg);
     transform-origin: 50% 50%;
@@ -130,32 +134,40 @@ h1 span:nth-last-child(2).scaled {
 
 /* De letters gaan dichter bij elkaar staan */
 @keyframes dichterbij {
-  0%, 20% {
+
+  0%,
+  20% {
     gap: .35em;
     transform: none;
     color: var(--color-text);
   }
+
   80% {
     gap: .12em;
     transform: none;
   }
+
   90% {
-    transform:scale(.9, 1.1); 
+    transform: scale(.9, 1.1);
     animation-timing-function: ease-in;
   }
+
   92% {
-    transform: scale(.85, 1.2); 
+    transform: scale(.85, 1.2);
     /* animation-timing-function:cubic-bezier(0.895, 0.030, 0.685, 0.220); */
     animation-timing-function: ease-in-out;
   }
+
   95% {
-    transform:scale(.87, 1.1);
+    transform: scale(.87, 1.1);
     animation-timing-function: ease-out;
   }
+
   98% {
-    transform:scale(.95, 1.05);
-    animation-timing-function: ease-in;  
+    transform: scale(.95, 1.05);
+    animation-timing-function: ease-in;
   }
+
   100% {
     gap: .05em;
     transform: none;
@@ -169,6 +181,7 @@ h1 span:nth-last-child(2).scaled {
   0% {
     background-position: 0 50%;
   }
+
   /* 50% {
     background-position: 50% 50%;
   } */
@@ -177,4 +190,3 @@ h1 span:nth-last-child(2).scaled {
     background-size: 900% 900%;
   }
 }
-
